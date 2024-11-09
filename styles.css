@@ -1,0 +1,280 @@
+/* Global Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    position: relative;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+/* App and Background Pattern */
+#app {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+#star-pattern {
+    background-image: url(Images/ORangeStar.jpg);
+    background-size: 70%;
+    background-repeat: repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    opacity: 0.7;
+    animation: pan 60s linear infinite;
+}
+
+/* Main Container */
+.container {
+    background-image: url(Images/stock-vector-blue-sky-with-clouds-anime-style-background-with-shining-sun-and-white-fluffy-clouds-sunny-day-2157978867-transformed.jpeg);
+    background-size: 100%;
+    background-repeat: repeat;
+    width: 90%;
+    max-width: 1000px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.container img {
+    border: none;
+    outline: none;
+}
+
+.search-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+input, button {
+    width: 80%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #a42020;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#searchButton {
+    background-image: url('Images/question.webp'), url('Images/question.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center, right center;
+    border: none;
+    padding: 10px 50px;
+    font-family: "Coiny", sans-serif;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 50px;
+    background-origin: content-box;
+    color: tomato;
+}
+
+button:hover {
+    box-shadow: 0 12px 16px rgba(0,0,0,0.24), 0 17px 50px rgba(0,0,0,0.19);
+}
+
+/* Results Styling */
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+    width: 100%;
+    font-family: "Coiny";
+}
+
+.result-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 15px;
+    width: 180px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.result-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.result-item img {
+    display: block;
+    margin: 0 auto 10px;
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.result-item h3 {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #333;
+    font-family: "marker";
+}
+
+.result-item p {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    color: #666;
+    font-family: "marker";
+}
+
+.result-item a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    font-family: "Coiny";
+}
+
+.result-item a:hover {
+    text-decoration: underline;
+}
+
+/* Animations */
+@keyframes pan {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+@keyframes rainbow-animation {
+    to { background-position: 4500vh; }
+}
+
+@keyframes glow-animation {
+    0% { box-shadow: 0 0 20px rgba(255, 165, 0, 0.8); transform: scale(1); }
+    50% { box-shadow: 0 0 50px rgba(255, 165, 0, 1); transform: scale(1.1); }
+    100% { box-shadow: 0 0 20px rgba(255, 165, 0, 0.8); transform: scale(1); }
+}
+
+h1 {
+    font-family: "Coiny";
+    font-size: 70px;
+    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-animation 90s linear infinite;
+}
+
+/* rnd Button with Glowing Effect */
+.rnd {
+    width: 200px;
+    height: 200px;
+    background-color: rgba(34, 4, 4, 0.471);
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-image: url('Images/Dragonball.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9;
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.8);
+    animation: glow-animation 4.5s ease-in-out infinite;
+    font-family: "Coiny", sans-serif;
+    cursor: pointer;
+}
+
+.refresh {
+    background-image: url('Images/backpacker-7628303_1280.webp');
+    background-size: cover;
+    background-position: center;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-family: "Coiny", sans-serif;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1200px) {
+    .container {
+        width: 85%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+    #searchButton {
+        padding: 10px 30px;
+        font-size: 14px;
+    }
+    h1 {
+        font-size: 50px;
+    }
+    .result-item {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+    #searchButton {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+    h1 {
+        font-size: 35px;
+    }
+    .result-item {
+        width: 120px;
+    }
+}
+
+@media (max-width: 320px) {
+    body {
+        width: 280px;
+    }
+}
+
+@media (max-height: 400px) {
+    body {
+        height: 350px;
+    }
+}

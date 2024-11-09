@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Anime Search Extension",
+  "description": "Search for Anime and Manga",
+  "version": "1.0",
+  "permissions": ["storage", "activeTab"],
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Anime Search"
+  },
+  "icons": {
+    "16": "Images/favicon_io(1)/favicon-16x16.png",
+    "32": "Images/favicon_io(1)/favicon-32x32.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "host_permissions": [
+    "https://mangaverse-api1.p.rapidapi.com/*"
+  ]
+}

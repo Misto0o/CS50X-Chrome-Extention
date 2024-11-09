@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Google Font -->
+        <link href='https://fonts.googleapis.com/css?family=Coiny' rel='stylesheet'>
+        <!-- CSS File -->
+        <link rel="stylesheet" href="styles.css">
+        <!-- Favicon -->
+        <link rel="icon" href="Images/favicon_io(1)/favicon-16x16.png" type="image/x-icon">
+        <!-- Open Graph meta tags -->
+        <meta property="og:title" content="Anime Search!" />
+        <meta property="og:description" content="Lookup any anime!" />
+        <meta property="og:image" content="Images/favicon_io/favicon-16x16.png" /> <!-- Corrected the path -->
+        <meta property="og:url" content="" /> <!-- Replace with actual URL -->
+        <meta property="og:type" content="website" /> <!-- Usually 'website' for Chrome Extensions -->
+    </head>
+   <title>Anime Search</title>
+</head>
+<body>
+    <div id="app">
+        <div id="star">
+            <div id="star-pattern"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="search-content">
+            <h1>Anime Search</h1>
+            <input type="text" id="searchQuery" placeholder="Search for Anime...">
+            <button id="searchButton">Search</button>
+            <button class="refresh" onClick="history.go(0);">Refresh Page</button>
+        </div>
+        <div id="results"></div>
+    </div>
+    <button class="rnd" id="rnd"> Show Random Anime</button>
+    <script src="script.js"></script>
+</body>
+</html>
