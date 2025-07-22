@@ -1,24 +1,28 @@
-/* Global Reset */
+@import url('https://fonts.googleapis.com/css2?family=Coiny:wght@400&family=Nunito:wght@400;600;700&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Body styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Nunito', sans-serif;
     margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow-x: hidden;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
-    position: relative;
-    overflow-x: hidden; /* Hide horizontal scrollbar */
+    align-items: flex-start;
 }
 
-/* App and Background Pattern */
+/* Animated background */
 #app {
     position: fixed;
     top: 0;
@@ -30,39 +34,79 @@ body {
 }
 
 #star-pattern {
-    background-image: url(Images/ORangeStar.jpg);
+    background-image: url('Images/OrangeStar.jpg');
     background-size: 70%;
     background-repeat: repeat;
     width: 100%;
     height: 100%;
     position: absolute;
     z-index: 1;
-    opacity: 0.7;
+    opacity: 0.3;
+    animation: twinkle 12s ease-in-out infinite alternate;
     animation: pan 60s linear infinite;
 }
 
-/* Main Container */
-.container {
-    background-image: url(Images/stock-vector-blue-sky-with-clouds-anime-style-background-with-shining-sun-and-white-fluffy-clouds-sunny-day-2157978867-transformed.jpeg);
-    background-size: 100%;
-    background-repeat: repeat;
-    width: 90%;
-    max-width: 1000px;
-    padding: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-    -webkit-user-select: none;
-    user-select: none;
+@keyframes twinkle {
+    0% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 0.4;
+    }
 }
 
-.container img {
-    border: none;
-    outline: none;
+.container {
+    background: linear-gradient(to bottom right, #ff6b6b, #666);
+    border-radius: 28px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    max-width: 600px;
+    /* Increased from 480px */
+    width: 95%;
+    padding: 40px 35px;
+    margin: 50px auto;
+    text-align: center;
+    animation: fadeInUp 0.6s ease forwards;
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Chrome extension specific styles */
+@media (max-width: 420px) {
+    .container {
+        max-width: 100%;
+        padding: 15px;
+        min-height: 450px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    input {
+        max-width: 100%;
+    }
+
+    #results {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+    }
+
+    .result-item {
+        padding: 15px;
+    }
+
+    .result-item img {
+        max-width: 80px;
+    }
 }
 
 .search-content {
@@ -70,211 +114,320 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin-bottom: 20px;
 }
 
-input, button {
-    width: 80%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #a42020;
-    border-radius: 4px;
-    box-sizing: border-box;
+/* Title styling */
+h1 {
+    font-family: 'Coiny', cursive;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    background: linear-gradient(45deg,
+            #ff6b6b,
+            #4ecdc4,
+            #45b7d1,
+            #96ceb4,
+            #ffd93d,
+            #ff9ff3,
+            #54a0ff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 6s ease-in-out infinite;
+    margin-bottom: 25px;
+    text-align: center;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+@keyframes gradient-shift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Input styling */
+input {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(white, white) padding-box,
+        linear-gradient(45deg, #ff6b6b, #4ecdc4) border-box;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+input:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+input::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* Button styling */
+button {
+    padding: 15px 30px;
+    margin: 10px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Coiny', cursive;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 #searchButton {
-    background-image: url('Images/question.webp'), url('Images/question.webp');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: left center, right center;
-    border: none;
-    padding: 10px 50px;
-    font-family: "Coiny", sans-serif;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    height: 50px;
-    background-origin: content-box;
-    color: tomato;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    font-weight: 600;
+    min-width: 150px;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
 }
 
-button:hover {
-    box-shadow: 0 12px 16px rgba(0,0,0,0.24), 0 17px 50px rgba(0,0,0,0.19);
+#searchButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
 }
 
-/* Results Styling */
-#results {
+#searchButton:active {
+    transform: translateY(-1px);
+}
+
+.refresh {
+    background: linear-gradient(45deg, #45b7d1, #96ceb4);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(69, 183, 209, 0.4);
+}
+
+.refresh:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(69, 183, 209, 0.6);
+}
+
+/* Random anime button */
+.rnd {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-image: url("/Images/Dragonball.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-family: 'Coiny', cursive;
+    font-size: 12px;
+    font-weight: 600;
+    border: 3px solid rgba(255, 165, 0, 0.6);
+    box-shadow:
+        0 8px 20px rgba(255, 165, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    animation: dragonball-glow 4s ease-in-out infinite;
+    z-index: 1000;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    margin-top: 20px;
-    gap: 10px;
-    width: 100%;
-    font-family: "Coiny";
-}
-
-.result-item {
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    margin: 10px;
-    padding: 15px;
-    width: 180px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-.result-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.result-item img {
-    display: block;
-    margin: 0 auto 10px;
-    width: 100px;
-    height: auto;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-}
-
-.result-item h3 {
-    font-size: 1.1em;
-    margin-bottom: 8px;
-    color: #333;
-    font-family: "marker";
-}
-
-.result-item p {
-    font-size: 0.9em;
-    margin-bottom: 10px;
-    color: #666;
-    font-family: "marker";
-}
-
-.result-item a {
-    text-decoration: none;
-    color: #007BFF;
-    font-weight: bold;
-    font-family: "Coiny";
-}
-
-.result-item a:hover {
-    text-decoration: underline;
+.rnd:hover {
+    transform: scale(1.1);
+    animation-play-state: paused;
+    box-shadow:
+        0 12px 30px rgba(255, 165, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 /* Animations */
 @keyframes pan {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
 }
 
-@keyframes rainbow-animation {
-    to { background-position: 4500vh; }
+@keyframes dragonball-glow {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow:
+            0 8px 20px rgba(255, 165, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        border-color: rgba(255, 165, 0, 0.6);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow:
+            0 15px 35px rgba(255, 165, 0, 0.8),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        border-color: rgba(255, 165, 0, 0.9);
+    }
 }
 
-@keyframes glow-animation {
-    0% { box-shadow: 0 0 20px rgba(255, 165, 0, 0.8); transform: scale(1); }
-    50% { box-shadow: 0 0 50px rgba(255, 165, 0, 1); transform: scale(1.1); }
-    100% { box-shadow: 0 0 20px rgba(255, 165, 0, 0.8); transform: scale(1); }
+/* Results section */
+#results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-top: 30px;
+    padding: 0 10px;
 }
 
-h1 {
-    font-family: "Coiny";
-    font-size: 70px;
-    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+.result-item {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.result-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
+    transition: left 0.5s ease;
+}
+
+.result-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.result-item:hover::before {
+    left: 100%;
+}
+
+.result-item img {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.result-item:hover img {
+    transform: scale(1.05);
+}
+
+.result-item h3 {
+    font-family: 'Coiny', cursive;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #333;
+    background: linear-gradient(45deg, #667eea, #764ba2);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: rainbow-animation 90s linear infinite;
 }
 
-/* rnd Button with Glowing Effect */
-.rnd {
-    width: 200px;
-    height: 200px;
-    background-color: rgba(34, 4, 4, 0.471);
-    border: none;
+.result-item p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.result-item a {
+    display: inline-block;
+    text-decoration: none;
     color: white;
-    padding: 5px 10px;
-    font-size: 12px;
-    border-radius: 50%;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    background-image: url('Images/Dragonball.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.9;
-    box-shadow: 0 0 20px rgba(255, 165, 0, 0.8);
-    animation: glow-animation 4.5s ease-in-out infinite;
-    font-family: "Coiny", sans-serif;
-    cursor: pointer;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    transition: all 0.3s ease;
 }
 
-.refresh {
-    background-image: url('Images/backpacker-7628303_1280.webp');
-    background-size: cover;
-    background-position: center;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    font-family: "Coiny", sans-serif;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
+.result-item a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
 }
 
-/* Responsive Media Queries */
-@media (max-width: 1200px) {
-    .container {
-        width: 85%;
-    }
-}
-
+/* Responsive design */
 @media (max-width: 768px) {
     .container {
-        width: 95%;
-        padding: 10px;
+        width: 98%;
+        padding: 20px;
+        margin: 10px auto;
     }
-    #searchButton {
-        padding: 10px 30px;
-        font-size: 14px;
-    }
+
     h1 {
-        font-size: 50px;
+        font-size: 2.5rem;
     }
-    .result-item {
-        width: 150px;
+
+    #results {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+
+    .rnd {
+        width: 60px;
+        height: 60px;
+        font-size: 10px;
+        bottom: 15px;
+        left: 15px;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        width: 100%;
-        padding: 5px;
+        padding: 15px;
     }
-    #searchButton {
-        padding: 10px 20px;
-        font-size: 12px;
-    }
-    h1 {
-        font-size: 35px;
-    }
-    .result-item {
-        width: 120px;
-    }
-}
 
-@media (max-width: 320px) {
-    body {
-        width: 280px;
+    input {
+        padding: 12px 16px;
     }
-}
 
-@media (max-height: 400px) {
-    body {
-        height: 350px;
+    button {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
+    #results {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 12px;
     }
 }
